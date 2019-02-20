@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       addFavourite: function(){
         this.favouriteBeers.push(this.selectedBeer);
-      }
+      },
+      removeFavourite: function(index){
+        this.favouriteBeers.splice(index, 1);
+      },
     }
   })
 })

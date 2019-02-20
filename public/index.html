@@ -26,10 +26,11 @@
     <div id="favourite_beers" v-if="favouriteBeers.length">
       <hr>
       <h3>Favourites</h3>
-      <div v-for="fav_beer in favouriteBeers">
+      <div v-for="(fav_beer, index) in favouriteBeers">
         <h3>{{ fav_beer.name }}</h3>
         <img :src="fav_beer.image_url"/>
-        <p>{{ fav_beer.description }}
+        <p>{{ fav_beer.description }}</p>
+        <button v-on:click="removeFavourite(index)">Remove</button>
       </div>
     </div>
   </div>
