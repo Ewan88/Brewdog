@@ -19,7 +19,30 @@
     <div id="selected_beer" v-if="selectedBeer">
       <h3>{{ selectedBeer.name }}</h3>
       <img :src="selectedBeer.image_url"/>
-      <p>{{ selectedBeer.description }}
+      <p>{{ selectedBeer.description }}</p>
+      <h4>Ingredients</h4>
+      <section>
+        <h5>Malt</h5>
+        <ul>
+          <li v-for="malts in selectedBeer.ingredients.malt">
+            {{ malts.name }}
+            <template v-for="malt in malts">
+              {{ malt.value }} {{ malt.unit }}
+            </template>
+          </li>
+        </ul>
+        <h5>Hops</h5>
+        <ul>
+          <li v-for="hops in selectedBeer.ingredients.hops">
+            {{ hops.name }}
+            <template v-for="hop in hops">
+              {{ hop.value }} {{ hop.unit }}
+            </template>
+          </li>
+        </ul>
+        <h5>Yeast</h5>
+        <ul><li>{{ selectedBeer.ingredients.yeast }}</li></ul>
+      </section>
       <br>
       <button v-on:click="addFavourite">Add to Favourites</button>
     </div>
@@ -30,6 +53,28 @@
         <h3>{{ fav_beer.name }}</h3>
         <img :src="fav_beer.image_url"/>
         <p>{{ fav_beer.description }}</p>
+        <section>
+          <h5>Malt</h5>
+          <ul>
+            <li v-for="malts in fav_beer.ingredients.malt">
+              {{ malts.name }}
+              <template v-for="malt in malts">
+                {{ malt.value }} {{ malt.unit }}
+              </template>
+            </li>
+          </ul>
+          <h5>Hops</h5>
+          <ul>
+            <li v-for="hops in fav_beer.ingredients.hops">
+              {{ hops.name }}
+              <template v-for="hop in hops">
+                {{ hop.value }} {{ hop.unit }}
+              </template>
+            </li>
+          </ul>
+          <h5>Yeast</h5>
+          <ul><li>{{ fav_beer.ingredients.yeast }}</li></ul>
+        </section>
         <button v-on:click="removeFavourite(index)">Remove</button>
       </div>
     </div>
