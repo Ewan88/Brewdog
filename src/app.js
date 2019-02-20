@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
         this.selectedBeer = this.beers[this.selectedBeerIndex];
       },
       addFavourite: function(){
+        if (this.favouriteBeers.length > 0){
+          for (let i = 0; i < this.favouriteBeers.length; i++){
+            if (this.selectedBeer.name === this.favouriteBeers[i].name){
+              return;
+            }
+          }
+        }
         this.favouriteBeers.push(this.selectedBeer);
       },
       removeFavourite: function(index){
